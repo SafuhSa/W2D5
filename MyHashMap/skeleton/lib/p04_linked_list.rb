@@ -35,10 +35,12 @@ class LinkedList
   end
 
   def first
+    return nil if @head.next.nil?
     @head.next
   end
 
   def last
+    return nil if @tail.prev.nil?
     @tail.prev
   end
 
@@ -69,9 +71,9 @@ class LinkedList
 
   def each
     check_node = first
-    until check_node == last
+    until check_node == @tail
       yield(check_node)
-      next_node = next_node.next
+      check_node = check_node.next
     end
   end
 
